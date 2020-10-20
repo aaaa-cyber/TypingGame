@@ -14,13 +14,14 @@ public class prepare {
         System.out.print("0...英単語/1...数字/2...かな : ");
         try {
             switchQuiz = run.stdIn.nextInt();
+            if (switchQuiz > 2 || switchQuiz < 0) throw new Exception();
         } catch (Exception e) {
             System.out.println("デフォルトでは\"英単語\"を選択します。");
         }
         switch (switchQuiz) {
-            case 0 : file = "words.txt"; break;
             case 1 : file = "numbers.txt"; break;
-            default : file = "kana.txt";
+            case 2 : file = "kana.txt"; break;
+            default : file = "words.txt";
         }
         try {
             LineNumberReader lr = new LineNumberReader(new FileReader("quiz/" + file));
