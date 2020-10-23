@@ -1,9 +1,10 @@
 package tools;
 
 import java.io.FileReader;
-import java.io.LineNumberReader;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-import java.io.File;
 
 public class prepare {
     public static String[] quiz(int num) {
@@ -24,30 +25,23 @@ public class prepare {
             default : file = "words.txt";
         }
         try {
-            LineNumberReader lr = new LineNumberReader(new FileReader("quiz/" + file));
-            int count = 0;
-            while (lr.readLine() != null) count++;
+            BufferedReader lr = new BufferedReader(new FileReader("quiz/" + file));
+            List<String> list = new ArrayList<String>();
+            while (lr.readLine() != null) list.add(lr.readLine());
             lr.close();
             int[] randomNum = new int[num];
+            //乱数の生成
             for (int i = 0; i < num; i++) {
                 LOOP : while (true) {
-                    randomNum[i] = rand.nextInt(count) + 1;
+                    randomNum[i] = rand.nextInt(list.size()) + 1;
+                    //重複チェック
                     if (i == 0) break;
                     for (int j = 0; j < i; j++) {
                         if (randomNum[j] == randomNum[i]) break;
                         if (j == i - 1) break LOOP;
                     }
                 }
-            }
-            for (int i = 0; i < num; i++) {
-                lr = new LineNumberReader(new FileReader("quiz/" + file));
-                for (int j = 0; j < count; j++) {
-                    ret[i] = lr.readLine();
-                    if (randomNum[i] == lr.getLineNumber()) {
-                        break;
-                    }
-                }
-                lr.close();
+                ret[i] = list.get(randomNum[i]);
             }
         } catch (Exception e) {
             System.out.println(e);
