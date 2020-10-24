@@ -8,6 +8,6 @@ class Main {
         long end = System.currentTimeMillis();
         double time = (double)(end - start)/1000;
         System.out.println("total : " + time + "s.");
-        rank.ing(time);
+        rank.showRanking(time);
     }
 }

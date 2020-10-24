@@ -39,7 +39,7 @@ public class rank {
         return list;
     }
 
-    public static void ing(double time) {
+    public static void showRanking(double time) {
         String pathToRanking = "ranking/" + prepare.file;
         ArrayList<Double> ranking = addTime(pathToRanking, time);
         String bar = "-------------------";
