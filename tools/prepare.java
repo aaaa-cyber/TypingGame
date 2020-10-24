@@ -5,11 +5,14 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 
 public class prepare {
+    public static String file;
+
     public static ArrayList<String> textToAryList(String filePass) {
         ArrayList<String> list = new ArrayList<>();
         try {
             BufferedReader lr = new BufferedReader(new FileReader(filePass));
-            while (lr.readLine() != null) list.add(lr.readLine());
+            String temp;
+            while ((temp = lr.readLine()) != null) list.add(temp);
             lr.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -18,7 +21,6 @@ public class prepare {
     }
 
     public static ArrayList<String> quizList() {
-        String file;
         int switchQuiz = 0;
         System.out.print("0...英単語/1...数字/2...かな : ");
         try {

@@ -1,12 +1,13 @@
-import tools.prepare;
 import tools.run;
-import java.util.Scanner;
+import tools.rank;
 
 class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         run.quiz();
         long end = System.currentTimeMillis();
-        System.out.println("total : " + (double)(end - start)/1000 + "s.");
+        double time = (double)(end - start)/1000;
+        System.out.println("total : " + time + "s.");
+        rank.ing(time);
     }
 }
