@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.io.File;
 
 public class prepare {
-    public static String file;
+    public static String FileName;
 
     public static ArrayList<String> readTextsStringList(String filePass) {
         ArrayList<String> list = new ArrayList<>();
@@ -44,10 +44,10 @@ public class prepare {
             System.out.println("デフォルトでは\"英単語\"を選択します。");
         }
         switch (switchQuiz) {
-            case 1 : file = "numbers.txt"; break;
-            case 2 : file = "kana.txt"; break;
-            default : file = "words.txt";
+            case 1 : FileName = "numbers.txt"; break;
+            case 2 : FileName = "kana.txt"; break;
+            default : FileName = "words.txt";
         }
-        return readTextsStringList("quiz/" + file);
+        return readTextsStringList("quiz/" + FileName);
     }
 }

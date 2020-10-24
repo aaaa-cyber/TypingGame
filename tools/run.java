@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
-public class run {
+public class run extends prepare{
     public static Scanner stdIn = new Scanner(System.in);
+
     public static void quiz() {
         Random rand = new Random();
-        int howMany = 3;
-        ArrayList<String> list = prepare.quizList();
-        for (int i = 0; i < howMany; i++) {
+        int howManyQuizzes = 3;
+        ArrayList<String> list = quizList();
+        for (int i = 0; i < howManyQuizzes; i++) {
             int randomNum = rand.nextInt(list.size());
             while (true) {
                 System.out.println(list.get(randomNum));
@@ -20,5 +21,10 @@ public class run {
                 }
             }
         }
+    }
+
+    public static void Result(double TimeOfThisTime) {
+        RankData rank = new RankData(FileName, TimeOfThisTime);
+        rank.ShowRanking();
     }
 }

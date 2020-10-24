@@ -1,5 +1,4 @@
 import tools.run;
-import tools.rank;
 
 class Main {
     public static void main(String[] args) {
@@ -8,6 +7,6 @@ class Main {
         long end = System.currentTimeMillis();
         double time = (double)(end - start)/1000;
         System.out.println("total : " + time + "s.");
-        rank.showRanking(time);
+        run.Result(time);
     }
 }
