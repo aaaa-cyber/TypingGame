@@ -3,16 +3,30 @@ package tools;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.ArrayList;
+import java.io.File;
 
 public class prepare {
     public static String file;
 
-    public static ArrayList<String> textToAryList(String filePass) {
+    public static ArrayList<String> readTextsStringList(String filePass) {
         ArrayList<String> list = new ArrayList<>();
+        try {
+            BufferedReader lr = new BufferedReader(new FileReader(new File(filePass)));
+            String temp;
+            while ((temp = lr.readLine()) != null) list.add(temp);
+            lr.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public static ArrayList<Double> readTextsDoubleList(String filePass) {
+        ArrayList<Double> list = new ArrayList<>();
         try {
             BufferedReader lr = new BufferedReader(new FileReader(filePass));
             String temp;
-            while ((temp = lr.readLine()) != null) list.add(temp);
+            while ((temp = lr.readLine()) != null) list.add(Double.parseDouble(temp));
             lr.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -34,6 +48,6 @@ public class prepare {
             case 2 : file = "kana.txt"; break;
             default : file = "words.txt";
         }
-        return textToAryList("quiz/" + file);
+        return readTextsStringList("quiz/" + file);
     }
 }
